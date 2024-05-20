@@ -9,7 +9,7 @@ get_probe_pos <- function(lindex, ltab, max_len) {
     llocus_tag <- larr[["locus_tag"]]
 
     # Always start from the 5-prime end, i.e. the start position and keep on adding
-    probe_len <- 100
+    probe_len <- 120
     probe_str_set <- c()
 
     #if (end - start <= probe_len) {
