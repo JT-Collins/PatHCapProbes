@@ -10,7 +10,9 @@ get_probe_pos <- function(lindex, ltab, max_len) {
 
     # Always start from the 5-prime end, i.e. the start position and keep on adding
     probe_len <- 120
-    probe_str_set <- c()
+    
+    #probe_str_set <- c()
+    probe_str_set <- vector("character", length = feature_size)
 
     #if (end - start <= probe_len) {
         #print("Small gene")
@@ -40,7 +42,7 @@ get_probe_pos <- function(lindex, ltab, max_len) {
 get_probe_sequences <- function(cds_name, probe_str_set, lfasta_obj1, probes_file, add_adapt, pre_str, suf_str) {
 
     # get strand
-    parts <- strsplit(cds_name, "_")
+    parts <- stringr::str_split(cds_name, "_")
     lstrand <- parts[[1]][5]
 
     sense_probe_count <- length(probe_str_set)
@@ -54,11 +56,11 @@ get_probe_sequences <- function(cds_name, probe_str_set, lfasta_obj1, probes_fil
 
     for (lprobe_str in probe_str_set) {
         # Get the probe
-        parts <- strsplit(lprobe_str, "___")[[1]]
+        parts <- stringr::str_split(lprobe_str, "___")[[1]]
         prob_head1 <- parts[[1]]
         probe_pos1 <- parts[[2]]
         
-        parts2 <- strsplit(probe_pos1, ":")[[1]]
+        parts2 <- stringr::str_split(probe_pos1, ":")[[1]]
 
         lstart <- parts2[1]
         lend <- parts2[2]
