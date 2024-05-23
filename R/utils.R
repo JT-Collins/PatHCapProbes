@@ -12,6 +12,7 @@ get_probe_pos <- function(lindex, ltab, max_len) {
     probe_len <- 120
     
     #probe_str_set <- c()
+    feature_size <- end - start + 1
     probe_str_set <- vector("character", length = feature_size)
 
     #if (end - start <= probe_len) {
@@ -19,7 +20,7 @@ get_probe_pos <- function(lindex, ltab, max_len) {
         #print(llocus_tag)
     #}
 
-    feature_size <- end - start + 1
+    
     for (lstart in seq(1, feature_size, probe_len)) {
         lend <- lstart + probe_len -1
         ab_start <- start + lstart -1
